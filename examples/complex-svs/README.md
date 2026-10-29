@@ -1,4 +1,11 @@
-# SV + CN Visualization Script
+# SV + CN Visualization Example
+
+This directory contains the notebook and example data for the structural
+variant (SV) and copy-number (CN) visualization shown in the repository's
+[front-page README](../../README.md).
+
+The reusable version is [`complex_sv_plot.py`](complex_sv_plot.py). The
+notebook contains the same plotting code in an interactive format.
 
 This script provides helper functions to visualize **structural variants (SVs)** and **copy number (CN)** information across chromosomes.  
 It is designed to produce two aligned panels:  
@@ -47,9 +54,28 @@ It is designed to produce two aligned panels:
 
 ## Dependencies
 
-- Python **3.8+**
+- Python **3.9+**
+- Dependencies listed in the repository [`requirements.txt`](../../requirements.txt)
 - [pandas](https://pandas.pydata.org/)  
 - [matplotlib](https://matplotlib.org/)
+
+## Running the script
+
+From the repository root, install the dependencies and pass the three input
+files to the script:
+
+```bash
+python -m pip install -r requirements.txt
+python examples/complex-svs/complex_sv_plot.py \
+  --coverage path/to/binned_coverage.tsv \
+  --segmentation path/to/segmentation.tsv \
+  --bedpe path/to/structural_variants.bedpe \
+  --output genomic_plot.pdf
+```
+
+Add `--chromosome chr7` to restrict the output to one chromosome. The input
+column layout is documented in the `load_coverage`, `load_segmentation`, and
+`load_bedpe` docstrings in the script.
 
 ## Example Output
 
